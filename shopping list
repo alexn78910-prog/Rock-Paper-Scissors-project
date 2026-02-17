@@ -1,0 +1,101 @@
+print("Welcome to your shopping list") 
+
+
+
+shopping_list = {}  # an empty dictionary
+
+while True:
+    choice = input("What would you like to do to your list(add/remove/print list): ").lower()
+    
+
+    if choice == "add":
+        item_name = input("What item would you like to add: ")
+        price = float(input("How much does this item cost: "))
+        quantity = int(input("How many do you want?: "))
+        shopping_list[item_name] = [price, quantity] # adding items
+        print("="*50)
+        print(f"{'Item' :<15} {'Price':>10} {'Quantity' :>10} {'Total' :>10}")
+        print("="*50)  
+
+        grand_total = 0
+
+        for item, details in shopping_list.items():
+            Item_price = details[0]
+            Item_quantity = details[1]
+            Item_total = Item_price * Item_quantity
+            grand_total += Item_total
+
+            print(f"{item:<15} ${Item_price:>9.2f} {Item_quantity:>10} {Item_total:>9.2f}")
+        print("="*50)
+        print(f"TOTAL PRICE                                {grand_total}")
+    
+    elif choice == "remove":
+        removed = input("What item would you like to remove: ")
+
+        if removed in shopping_list:
+            del shopping_list[removed]
+            grand_total = 0
+            print("shopping list updated")
+            print(f"{removed} has been removed from the shopping list")
+            print("="*50)
+            print(f"{'Item' :<15} {'Price':>10} {'Quantity' :>10} {'Total' :>10}")
+            print("="*50)
+            grand_total = 0
+
+        
+
+            for item, details in shopping_list.items():
+                Item_price = details[0]
+                Item_quantity = details[1]
+                Item_total = Item_price * Item_quantity
+                grand_total += Item_total
+                print(f"{item:<15} ${Item_price:>9.2f} {Item_quantity:>10} {Item_total:>9.2f}")
+            print("="*50)
+            print(f"TOTAL PRICE                                {grand_total}")
+
+        else:
+            print(f"{removed} was not found in the list")
+    
+    
+    
+    elif choice == "finalise":
+        if not shopping_list:
+            print("your shopping list is empty")
+        else:
+            print("here is your final shopping list")
+            print("="*50)
+            print(f"{'Item' :<15} {'Price':>10} {'Quantity' :>10} {'Total' :>10}")
+            print("="*50)
+            grand_total = 0
+
+        
+
+            for item, details in shopping_list.items():
+                Item_price = details[0]
+                Item_quantity = details[1]
+                Item_total = Item_price * Item_quantity
+                grand_total += Item_total
+                print(f"{item:<15} ${Item_price:>9.2f} {Item_quantity:>10} {Item_total:>9.2f}")
+            print("="*50)
+            print(f"TOTAL PRICE                                {grand_total}")
+            break
+
+        
+
+        
+
+    else:
+        print(f"{choice} is not a valid option please try again")
+
+    
+
+
+      
+    
+    
+
+    
+
+
+
+
